@@ -1,0 +1,7 @@
+{% extends 'myapp/main.html' %} {% block content %}
+  <h1>{{ user.name }} {{ user.surname }}</h1>
+  <h1>{{ user.personid }}</h1>
+  <h1>{{ user.uuid }}</h1>
+  <a href="{% url 'user_delete' user.id %}">Delete Object</a>
+  <a href="{% url 'user_update' user.id %}">Update Data</a>
+{% endblock %}

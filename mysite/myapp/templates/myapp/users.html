@@ -1,0 +1,53 @@
+{% extends 'myapp/main.html' %} {% block content %}
+  <div class="search">
+    <form class="example" action="{% url 'users_search' %}" method="GET">
+      <input type="text" placeholder="Search.." name="query" />
+      <select name="search-option" id="search-option">
+        <option value="ID">ID</option>
+        <option value="name">name</option>
+        <option value="surname">surname</option>
+        <option value="personID">personID</option>
+        <option value="Uuid">Uuid</option>
+      </select>
+      <button type="submit" id="button">
+        Submit
+        <i class="fa fa-search"></i>
+      </button>
+    </form>
+  </div>
+
+
+  <div class="users-table">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col" id="personid">PersonID</th>
+          <th scope="col" id="uuid">Uuid</th>
+          <th scope="col" id="view-user">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.name }}</td>
+            <td>{{ user.surname }}</td>
+            <td>{{ user.personid }}</td>
+            <td>{{ user.uuid }}</td>
+            <td id="view-user">
+              <a href="{% url 'user' user.id %}">Detail</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="100%">Total number of users:{{ users_count }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+{% endblock %}

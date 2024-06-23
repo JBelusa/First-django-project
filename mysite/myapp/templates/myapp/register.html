@@ -1,0 +1,13 @@
+{% extends 'myapp/main.html' %} {% block content %}
+  <div class="user-registration">
+    <h1>Register new user</h1>
+    <form class="register-user" action="" method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit" class="user-submit">Register</button>
+    </form>
+    {% for message in messages %}
+      <p class="text-center">{{ message }}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

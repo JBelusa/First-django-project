@@ -1,0 +1,12 @@
+{% extends 'myapp/main.html' %} {% block content %}
+  <h1>Update user</h1>
+
+  <p>Update users {{ user.id }}?</p>
+  <div class="users-rud">
+    <form class="create-user" action="" method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit" class="user-submit">Submit</button>
+    </form>
+  </div>
+{% endblock %}

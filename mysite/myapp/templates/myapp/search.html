@@ -1,0 +1,20 @@
+{% extends 'myapp/main.html' %}
+
+{% block content %}
+  <h1>{{ search_option }}</h1>
+  <hr />
+  <ul>
+    {% if users.exists %}
+      {% for user in users %}
+        <li>
+          <h2>{{ user.name }}</h2>
+          <p>{{ user.uuid }}</p>
+        </li>
+      {% endfor %}
+    {% else %}
+      <li>
+        <h2>{{ user_not_found }}</h2>
+      </li>
+    {% endif %}
+  </ul>
+{% endblock %}

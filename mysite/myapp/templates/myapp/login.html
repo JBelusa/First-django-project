@@ -1,0 +1,24 @@
+{% extends 'myapp/main.html' %} {% block content %}
+  <div class="login-container">
+    <h2>Login</h2>
+    <form action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+      </div>
+      <button id="auth-submit" type="submit">Login</button>
+    </form>
+    {% for message in messages %}
+      <p class="text-center">{{ message }}</p>
+    {% endfor %}
+    <h1>
+      Dont have an account?
+      <a href="{% url 'register' %}">Sign up</a>
+    </h1>
+  </div>
+{% endblock %}

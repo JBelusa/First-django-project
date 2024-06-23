@@ -1,0 +1,9 @@
+{% extends 'myapp/main.html' %} {% block content %}
+  <h1>Delete Object</h1>
+
+  <p>Are you sure you want to delete user with id {{ user.id }}?</p>
+  <form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Delete" />
+  </form>
+{% endblock %}
