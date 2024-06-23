@@ -1,9 +1,10 @@
-{% extends 'myapp/main.html' %} {% block content %}
-  <div class="user-registration">
+{% extends 'myapp/main.html' %}
+{% block content %}
+  <div id="register-pop-up-form">
     <h1>Register new user</h1>
-    <form class="register-user" action="" method="POST">
+    <form id="register-form" action="" method="POST">
       {% csrf_token %}
-      {{ form }}
+      {{ form.as_p }}
       <button type="submit" class="user-submit">Register</button>
     </form>
     {% for message in messages %}
@@ -11,3 +12,4 @@
     {% endfor %}
   </div>
 {% endblock %}
+

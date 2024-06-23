@@ -136,29 +136,27 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
-            return redirect("users")
+            return JsonResponse({'status': 'success'})
         else:
-            messages.info(
-                request, "Wrong credentials, username or password is incorrect"
-            )
-    context = {}
-    return render(request, "myapp/login.html", context)
+            return JsonResponse({'status': 'error', 'message': 'Wrong credentials, username or password is incorrect'})
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'})
 
 
 def user_register(request):
-    form = RegisterForm(request.POST)
+    
     if request.method == "POST":
-
+        form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get("username")
             messages.success(request, "Account successfully created for " + user)
-            return redirect("login")
-
+            return redirect("home")
+    else:
+        form=RegisterForm()
     context = {"form": form}
     return render(request, "myapp/register.html", context)
 
 
 def user_logout(request):
     logout(request)
-    return redirect("login")
+    return redirect("home")

@@ -34,7 +34,7 @@ footer {
   padding: 30px;
 }
 
-#button {
+#search-button {
   width: 100px;
   height: 30px;
   color: hsl(0, 0%, 0%);
@@ -74,7 +74,8 @@ nav {
 }
 
 .navbar-nav a,
-#logout-container span * {
+#authentication-container span *:not(#login-pop-up-form *),
+#login-button {
   border-radius: 1rem;
   text-decoration: none;
   color: white;
@@ -86,8 +87,15 @@ nav {
 }
 
 .navbar-nav a:hover,
-#logout-container span a:hover {
+#authentication-container span a:hover,
+#-button:hover {
   background-color: hsl(0, 0%, 10%);
+}
+
+#login-auth-button,
+#register-auth-button {
+  all: unset;
+  cursor: pointer;
 }
 
 /* Users table */
@@ -181,7 +189,7 @@ input[type="password"] {
 
 /* Logout */
 
-#logout-container {
+#authentication-container {
   height: 100%;
   display: flex;
   white-space: nowrap;
@@ -189,4 +197,14 @@ input[type="password"] {
   padding: 0;
 }
 
-
+#login-pop-up-form {
+  display: none; /* Hide the form by default */
+  position: absolute; /* Position the form absolutely */
+  top: 50%; /* Position the form at the center of the page */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ff0000; /* Set the background color of the form */
+  border: 1px solid #ccc; /* Add a border around the form */
+  padding: 20px; /* Add some padding to the form */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow to the form */
+}
