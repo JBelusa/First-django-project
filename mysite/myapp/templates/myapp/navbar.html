@@ -29,7 +29,7 @@
         </div>
       {% else %}
         <div class="register-container">
-          <a href="{% url 'register' %}">Register</a>
+          <a id="register-redirect" href="{% url 'register' %}">Register</a>
           {% include 'myapp/login.html' %}
         </div>
       {% endif %}

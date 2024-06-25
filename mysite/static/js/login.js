@@ -24,7 +24,6 @@ document
           // Login successful, close the popup
           loginForm.style.display = "none";
           loginPopup.style.display = "none";
-
           window.location.reload();
         } else {
           // Login failed, show an error message in the popup

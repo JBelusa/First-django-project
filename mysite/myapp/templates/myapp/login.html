@@ -2,15 +2,15 @@
   {% load static %}
   <button id="login-auth-button">Login</button>
   <div id="login-pop-up-form">
-    <h1>Login</h1>
     <form id="login-form" action="{% url 'login' %}" method="post">
+      <h1>Login</h1>
       {% csrf_token %}
+      <label for="username">Username:</label>
       <div class="form-group">
-        <label for="username">Username:</label>
         <input type="text" id="username" name="username" />
       </div>
+      <label for="password">Password:</label>
       <div class="form-group">
-        <label for="password">Password:</label>
         <input type="password" id="password" name="password" />
       </div>
       <button id="auth-submit" type="submit">Login</button>
@@ -19,10 +19,8 @@
     {% for message in messages %}
       <p class="text-center">{{ message }}</p>
     {% endfor %}
-    <h1>
-      Dont have an account?
-      <a href="{% url 'register' %}">Sign up</a>
-    </h1>
+    <h4>Dont have an account?</h4>
+    <a id="signup-redirect" href="{% url 'register' %}">Sign up</a>
   </div>
 
   <script src="{% static 'js/login.js' %}"></script>

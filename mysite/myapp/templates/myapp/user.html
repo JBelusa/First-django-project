@@ -1,4 +1,8 @@
-{% extends 'myapp/main.html' %} {% block content %}
+{% extends 'myapp/main.html' %}
+{% block title %}
+  <title>{{ user.name }} {{ user.surname }}</title>
+{% endblock %}
+{% block content %}
   <h1>{{ user.name }} {{ user.surname }}</h1>
   <h1>{{ user.personid }}</h1>
   <h1>{{ user.uuid }}</h1>

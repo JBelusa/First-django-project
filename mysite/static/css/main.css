@@ -87,8 +87,8 @@ nav {
 }
 
 .navbar-nav a:hover,
-#authentication-container span a:hover,
-#-button:hover {
+#register-redirect:hover,
+#login-auth-button:hover {
   background-color: hsl(0, 0%, 10%);
 }
 
@@ -111,7 +111,7 @@ nav {
 }
 
 #personid {
-  min-width: 120px;
+  min-width: 140px;
 }
 #uuid {
   min-width: 300px;
@@ -161,33 +161,18 @@ nav {
   background-color: #f9f9f9;
 }
 
-.form-group {
-  margin-bottom: 10px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-}
-
-.login-container input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 5px;
-  margin-top: 5px;
-  border-radius: 5px;
-}
-
-#auth-submit {
+#auth-submit,
+#signup-redirect,
+#register-button {
   padding: 8px 16px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin: 10px;
+  text-decoration: none;
 }
-
-/* Logout */
 
 #authentication-container {
   height: 100%;
@@ -199,12 +184,137 @@ input[type="password"] {
 
 #login-pop-up-form {
   display: none; /* Hide the form by default */
+  text-align: center;
   position: absolute; /* Position the form absolutely */
   top: 50%; /* Position the form at the center of the page */
   left: 50%;
+  width: 250px;
   transform: translate(-50%, -50%);
-  background-color: #ff0000; /* Set the background color of the form */
+  background-color: hsl(0, 0%, 20%);
   border: 1px solid #ccc; /* Add a border around the form */
   padding: 20px; /* Add some padding to the form */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow to the form */
+}
+
+#login-pop-up-form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  width: 60%;
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#login-pop-up-form label,
+#login-pop-up-form h1 {
+  font-weight: bold;
+}
+#login-pop-up-form h1,
+#login-pop-up-form h4 {
+  margin-bottom: 10px;
+}
+
+#auth-submit:hover,
+#signup-redirect:hover,
+#register-button:hover {
+  background-color: hsl(180, 100%, 40%);
+}
+
+/* Register form */
+#register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 60%;
+  margin: 0 auto;
+  /* border: 1px solid #ccc; */
+  border-radius: 10px;
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+}
+#register-form {
+  width: 100%;
+}
+
+#register-header,
+#register-footer {
+  background-color: #ffe600;
+  width: 100%;
+  font-size: 24px;
+  text-align: center;
+}
+#register-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#register-footer {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#register-table {
+  border-spacing: 0px;
+
+  width: 100%;
+}
+
+#register-table td {
+  /* border: 1px solid #ddd; */
+  padding: 8px;
+  text-align: left;
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+label {
+  font-weight: bold;
+}
+
+/* #register-table input[type="text"]:focus, */
+#register-table input[type="text"],
+#register-table input[type="email"],
+#register-table input[type="password"] {
+  border-color: #aaa;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.helptext {
+  font-size: smaller;
+  color: hsl(0, 0%, 20%);
+}
+
+.pw-help li {
+  margin-left: 10px;
+  font-size: smaller;
+  color: hsl(0, 0%, 20%);
+}
+
+.errorlist li {
+  color: #007bff;
+  text-align: left;
+}
+
+.errorlist {
+  min-height: 50px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
 }
