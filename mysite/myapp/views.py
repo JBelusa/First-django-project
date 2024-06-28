@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from myapp.models import Users
-from myapp.forms import UsersForm, RegisterForm
+from myapp.forms import UsersForm,RegisterForm, UserUpdateForm
 
 
 # Create your views here.
@@ -160,3 +160,17 @@ def user_register(request):
 def user_logout(request):
     logout(request)
     return redirect("home")
+
+
+def user_account(request):
+    if request.method == "POST":
+        user = request.user
+        form = UserUpdateForm(request.POST, instance=user)
+        print(form.is_valid())
+        if form.is_valid():
+            form.save()
+            print("user changed")
+    else:
+        form = UserUpdateForm(instance=request.user)
+    context = {"form": form}
+    return render(request, "myapp/account.html", context)

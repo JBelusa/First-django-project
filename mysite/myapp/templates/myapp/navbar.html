@@ -24,7 +24,7 @@
     <span>
       {% if user.is_authenticated %}
         <div class="logout-container">
-          <span>Welcome, {{ request.user }}</span>
+          <a href="{% url 'account' %}">Welcome, {{ request.user.first_name }}</a>
           <a href="{% url 'logout' %}">Logout</a>
         </div>
       {% else %}

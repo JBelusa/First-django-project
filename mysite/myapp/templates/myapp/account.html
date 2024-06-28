@@ -1,0 +1,113 @@
+{% extends 'myapp/main.html' %}
+{% block title %}
+  <title>{{ karel.first_name }} {{ user.last_name }}</title>
+{% endblock %}
+{% block content %}
+  {% comment %} <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+  <h1>{{ user.personid }}</h1>
+  <h1>{{ user.uuid }}</h1>
+  <a href="{% url 'user_delete' user.id %}">Delete Object</a>
+  <a href="{% url 'user_update' user.id %}">Update Data</a> {% endcomment %}
+
+  <div id="register-container">
+    <div id="register-header">
+      <h1>Change user information</h1>
+    </div>
+    {% comment %} <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit">Update</button>
+    </form> {% endcomment %}
+
+    <form id="register-form" action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <table id="register-table">
+        <tbody>
+          <tr>
+            <td>
+              <label for="id_username">Username:</label>
+            </td>
+            <td>
+              <input type="text" name="username" value="{{ user.username }}" />
+            </td>
+            <td>
+              <p class="helptext">{{ form.username.help_text }}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="id_first_name">First Name:</label>
+            </td>
+            <td>
+              <input type="text" name="first_name" value="" />
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="id_last_name">Last Name:</label>
+            </td>
+            <td>
+              <input type="text" name="last_name" value="" />
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="id_email">Email:</label>
+            </td>
+            <td>
+              <input type="email" name="email" value="" />
+            </td>
+            <td></td>
+          </tr>
+          {% comment %} <tr>
+            <td>
+              <label for="id_password1">Password:</label>
+            </td>
+            <td>
+              <input type="password" name="password1" />
+            </td>
+            <td class="pw-help">
+              <p class="helptext">{{ form.password1.help_text }}</p>
+            </td>
+          </tr> {% endcomment %}
+          {% comment %} <tr>
+            <td>
+              <label for="id_password2">Confirm Password:</label>
+            </td>
+            <td>
+              <input type="password" name="password2" />
+            </td>
+
+            <td>
+              <p class="helptext">{{ form.password2.help_text }}</p>
+            </td>
+          </tr> {% endcomment %}
+        </tbody>
+      </table>
+
+      <div id="register-footer">
+        <div class="errorlist">
+          {% if form.username.errors or form.password1.errors or form.password2.errors %}
+            <ul>
+              {% for error in form.username.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+              {% for error in form.password1.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div>
+          <label for="id_password1">Confirm password:</label>
+          <input type="password" name="password1" />
+        </div>
+
+        <button id="register-button" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}
