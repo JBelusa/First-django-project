@@ -1,12 +1,13 @@
 from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse, redirect
 
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from myapp.models import Users
 from myapp.forms import UsersForm,RegisterForm, UserUpdateForm
+from django.contrib.auth import update_session_auth_hash
 
 
 # Create your views here.
@@ -174,3 +175,16 @@ def user_account(request):
         form = UserUpdateForm(instance=request.user)
     context = {"form": form}
     return render(request, "myapp/account.html", context)
+
+def change_password(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(user=request.user,data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, request.user)
+            messages.success(request, 'Your password has been successfully updated!')
+            return redirect('home')
+    else:
+            form =PasswordChangeForm(user=request.user)   
+    context= {"form": form}                    
+    return render(request, "myapp/change_password.html",context)

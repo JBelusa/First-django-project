@@ -3,12 +3,6 @@
   <title>{{ karel.first_name }} {{ user.last_name }}</title>
 {% endblock %}
 {% block content %}
-  {% comment %} <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-  <h1>{{ user.personid }}</h1>
-  <h1>{{ user.uuid }}</h1>
-  <a href="{% url 'user_delete' user.id %}">Delete Object</a>
-  <a href="{% url 'user_update' user.id %}">Update Data</a> {% endcomment %}
-
   <div id="register-container">
     <div id="register-header">
       <h1>Change user information</h1>
@@ -101,6 +95,7 @@
             </ul>
           {% endif %}
         </div>
+        <a id="register-button" href="{% url 'password' %}">Change password</a>
         <div>
           <label for="id_password1">Confirm password:</label>
           <input type="password" name="password1" />
