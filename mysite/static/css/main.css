@@ -163,7 +163,7 @@ nav {
 
 #auth-submit,
 #signup-redirect,
-#register-button {
+#profile-btn {
   padding: 8px 16px;
   background-color: #007bff;
   color: white;
@@ -227,7 +227,7 @@ nav {
 
 #auth-submit:hover,
 #signup-redirect:hover,
-#register-button:hover {
+#profile-btn:hover {
   background-color: hsl(180, 100%, 40%);
 }
 
@@ -317,4 +317,11 @@ label {
   padding-top: 20px;
   display: flex;
   justify-content: center;
+}
+
+#change-pass-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* set the height of the container */
 }

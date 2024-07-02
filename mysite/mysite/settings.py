@@ -127,6 +127,9 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
+MEDIA_URL = "mediafiles/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles/profile_pictures")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -134,6 +137,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # python manage.py runserver --noreload
 LIVERELOAD = True
-LIVERELOAD_HOST = 'localhost:35729'
+LIVERELOAD_HOST = "localhost:35729"
 LIVERELOAD_PORT = 35729
-

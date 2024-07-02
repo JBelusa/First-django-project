@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from myapp.models import Users
-from myapp.forms import UsersForm,RegisterForm, UserUpdateForm
+from myapp.forms import UsersForm, RegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth import update_session_auth_hash
 
 
@@ -137,14 +137,19 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
-            return JsonResponse({'status': 'success'})
+            return JsonResponse({"status": "success"})
         else:
-            return JsonResponse({'status': 'error', 'message': 'Wrong credentials, username or password is incorrect'})
-    return JsonResponse({'status': 'error', 'message': 'Invalid request'})
+            return JsonResponse(
+                {
+                    "status": "error",
+                    "message": "Wrong credentials, username or password is incorrect",
+                }
+            )
+    return JsonResponse({"status": "error", "message": "Invalid request"})
 
 
 def user_register(request):
-    
+
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -153,7 +158,7 @@ def user_register(request):
             messages.success(request, "Account successfully created for " + user)
             return redirect("home")
     else:
-        form=RegisterForm()
+        form = RegisterForm()
     context = {"form": form}
     return render(request, "myapp/register.html", context)
 
@@ -164,27 +169,36 @@ def user_logout(request):
 
 
 def user_account(request):
+    user = request.user
+    user_profile = request.user.profile
     if request.method == "POST":
-        user = request.user
-        form = UserUpdateForm(request.POST, instance=user)
-        print(form.is_valid())
-        if form.is_valid():
-            form.save()
-            print("user changed")
+
+        u_form = UserUpdateForm(request.POST, instance=user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=user_profile)
+
+        if u_form.is_valid() and p_form.is_valid():
+            print(user.first_name + " " + user.last_name)
+            print(u_form.is_valid())
+            print(p_form.is_valid())
+            u_form.save()
+            p_form.save()
+
     else:
-        form = UserUpdateForm(instance=request.user)
-    context = {"form": form}
+        u_form = UserUpdateForm(instance=user)
+        p_form = ProfileUpdateForm(instance=user_profile)
+    context = {"u_form": u_form, "p_form": p_form}
     return render(request, "myapp/account.html", context)
+
 
 def change_password(request):
     if request.method == "POST":
-        form = PasswordChangeForm(user=request.user,data=request.POST)
+        form = PasswordChangeForm(user=request.user, data=request.POST)
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, request.user)
-            messages.success(request, 'Your password has been successfully updated!')
-            return redirect('home')
+            messages.success(request, "Your password has been successfully updated!")
+            return redirect("home")
     else:
-            form =PasswordChangeForm(user=request.user)   
-    context= {"form": form}                    
-    return render(request, "myapp/change_password.html",context)
+        form = PasswordChangeForm(user=request.user)
+    context = {"form": form}
+    return render(request, "myapp/change_password.html", context)

@@ -8,6 +8,8 @@
 from django.db import models
 import uuid
 from . import utils
+from django.contrib.auth.models import User
+
 
 class Users(models.Model):
     id = models.AutoField(
@@ -16,9 +18,12 @@ class Users(models.Model):
     name = models.CharField(max_length=100)
     surname = models.CharField(max_length=100, blank=True, null=True)
     personid = models.CharField(
-        db_column="personID", unique=True, max_length=12
-    , default=utils.generate_personid)  # Field name made lowercase.
-    
+        db_column="personID",
+        unique=True,
+        max_length=12,
+        default=utils.generate_personid,
+    )  # Field name made lowercase.
+
     uuid = models.CharField(
         db_column="Uuid", unique=True, max_length=100, default=uuid.uuid4
     )  # Field name made lowercase.
@@ -26,3 +31,11 @@ class Users(models.Model):
     class Meta:
         managed = False
         db_table = "users"
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default="default.jpg", upload_to="custom_pictures")
+
+    def __str__(self):
+        return f"{self.user.username} Profile"

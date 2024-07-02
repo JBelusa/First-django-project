@@ -1,0 +1,14 @@
+{% extends 'myapp/main.html' %}
+{% block title %}
+  <title>{{ user.first_name }} {{ user.last_name }}</title>
+{% endblock %}
+{% block content %}
+  <div id="register-container">
+    <div id="register-header">
+      <h1>Change user information</h1>
+    </div>
+    {% block userinfo %}
+
+    {% endblock %}
+  </div>
+{% endblock %}
