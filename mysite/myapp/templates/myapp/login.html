@@ -1,5 +1,4 @@
 {% block content %}
-  {% load static %}
   <button id="login-auth-button">Login</button>
   <div id="login-pop-up-form">
     <form id="login-form" action="{% url 'login' %}" method="post">
@@ -22,6 +21,6 @@
     <h4>Dont have an account?</h4>
     <a id="signup-redirect" href="{% url 'register' %}">Sign up</a>
   </div>
-
+  {% load static %}
   <script src="{% static 'js/login.js' %}"></script>
 {% endblock %}
