@@ -1,0 +1,327 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* header */
+
+header {
+  /* background-image: url("/static/images/header.jpg"); */
+  background-color: hsl(0, 0%, 20%);
+  height: 10vh;
+  border-bottom: 5px solid white;
+  padding-bottom: 10px;
+}
+
+body {
+  background-color: hsl(0, 0%, 60%);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 77vh;
+}
+
+footer {
+  border-top: 5px solid white;
+  height: 10vh;
+}
+/* search */
+
+.search {
+  text-align: center;
+  padding: 30px;
+}
+
+#search-button {
+  width: 100px;
+  height: 30px;
+  color: hsl(0, 0%, 0%);
+  border-radius: 10px;
+  background-color: hsl(0, 29%, 60%);
+}
+
+.search select {
+  color: blue;
+  border-radius: 10px;
+}
+
+/* navbar */
+nav {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-fluid {
+  height: 100%;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: left;
+  padding: 0;
+}
+.container-fluid #navbar-logo {
+  margin: 20px;
+  height: 60%;
+  width: auto;
+}
+.navbar-nav li {
+  display: inline;
+
+  font-size: 2rem;
+}
+
+.navbar-nav a,
+#authentication-container span *:not(#login-pop-up-form *),
+#login-button {
+  border-radius: 1rem;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+.navbar-nav {
+  padding-left: 0;
+}
+
+.navbar-nav a:hover,
+#register-redirect:hover,
+#login-auth-button:hover {
+  background-color: hsl(0, 0%, 10%);
+}
+
+#login-auth-button,
+#register-auth-button {
+  all: unset;
+  cursor: pointer;
+}
+
+/* Users table */
+.users-table {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.users-table tbody td {
+  border: 1px solid;
+  min-width: 100px;
+}
+
+#personid {
+  min-width: 140px;
+}
+#uuid {
+  min-width: 300px;
+}
+
+.users-table table {
+  border: 5px solid hsl(183, 35%, 80%);
+  border-spacing: 0px;
+  text-align: center;
+}
+.users-table th[scope="col"] {
+  border-bottom: 5px solid hsl(205, 80%, 40%);
+  background-color: hsl(183, 35%, 60%);
+}
+.users-table th[scope="row"] {
+  border-right: 5px solid hsl(205, 80%, 40%);
+}
+
+.users-table tfoot td {
+  font-weight: bold;
+  background-color: hsl(183, 35%, 60%);
+  border-top: 5px solid hsl(205, 80%, 40%);
+}
+
+.users-table tbody tr:nth-child(odd) {
+  background-color: hsl(0, 0%, 85%);
+  text-align: center;
+}
+.users-table tbody tr:nth-child(even) {
+  background-color: hsl(0, 0%, 100%);
+  text-align: center;
+}
+
+.users-table tbody tr:hover {
+  background-color: hsl(215, 100%, 87%);
+  font-weight: bold;
+}
+
+/* Login */
+
+.login-container {
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+#auth-submit,
+#signup-redirect,
+#profile-btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  text-decoration: none;
+}
+
+#authentication-container {
+  height: 100%;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  padding: 0;
+}
+
+#login-pop-up-form {
+  display: none; /* Hide the form by default */
+  text-align: center;
+  position: absolute; /* Position the form absolutely */
+  top: 50%; /* Position the form at the center of the page */
+  left: 50%;
+  width: 250px;
+  transform: translate(-50%, -50%);
+  background-color: hsl(0, 0%, 20%);
+  border: 1px solid #ccc; /* Add a border around the form */
+  padding: 20px; /* Add some padding to the form */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow to the form */
+}
+
+#login-pop-up-form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  width: 60%;
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#login-pop-up-form label,
+#login-pop-up-form h1 {
+  font-weight: bold;
+}
+#login-pop-up-form h1,
+#login-pop-up-form h4 {
+  margin-bottom: 10px;
+}
+
+#auth-submit:hover,
+#signup-redirect:hover,
+#profile-btn:hover {
+  background-color: hsl(180, 100%, 40%);
+}
+
+/* Register form */
+#register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 60%;
+  margin: 0 auto;
+  /* border: 1px solid #ccc; */
+  border-radius: 10px;
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+}
+#register-form {
+  width: 100%;
+}
+
+#register-header,
+#register-footer {
+  background-color: #ffe600;
+  width: 100%;
+  font-size: 24px;
+  text-align: center;
+}
+#register-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#register-footer {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#register-table {
+  border-spacing: 0px;
+
+  width: 100%;
+}
+
+#register-table td {
+  /* border: 1px solid #ddd; */
+  padding: 8px;
+  text-align: left;
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+label {
+  font-weight: bold;
+}
+
+/* #register-table input[type="text"]:focus, */
+#register-table input[type="text"],
+#register-table input[type="email"],
+#register-table input[type="password"] {
+  border-color: #aaa;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.helptext {
+  font-size: smaller;
+  color: hsl(0, 0%, 20%);
+}
+
+.pw-help li {
+  margin-left: 10px;
+  font-size: smaller;
+  color: hsl(0, 0%, 20%);
+}
+
+.errorlist li {
+  color: #007bff;
+  text-align: left;
+}
+
+.errorlist {
+  min-height: 50px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#change-pass-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* set the height of the container */
+}

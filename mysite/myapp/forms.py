@@ -23,7 +23,7 @@ class RegisterForm(UserCreationForm):
             "password1",
             "password2",
         ]
-        # widgets = {'first_name': forms.TextInput(attrs={'size': 100})}
+        
 
 
 class UserUpdateForm(UserChangeForm):

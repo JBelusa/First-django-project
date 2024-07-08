@@ -81,11 +81,11 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "genesis",
+        "NAME": "railway",
         "USER": "root",
-        "PASSWORD": "Genesis1",
-        "HOST": "localhost",
-        "PORT": "3306",
+        "PASSWORD": "katwsHSnlHhhflFnDgwcelQijvNiBflg",
+        "HOST": "roundhouse.proxy.rlwy.net",
+        "PORT": "30844",
     }
 }
 
@@ -126,6 +126,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = "mediafiles/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles/profile_pictures")
