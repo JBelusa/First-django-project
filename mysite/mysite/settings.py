@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-v(v-=h04es&5mre#19%is&*h9)%-p*umi-)=yuv$z9r#g&(@c)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -83,9 +83,9 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "railway",
         "USER": "root",
-        "PASSWORD": "katwsHSnlHhhflFnDgwcelQijvNiBflg",
-        "HOST": "roundhouse.proxy.rlwy.net",
-        "PORT": "30844",
+        "PASSWORD": "BGBZfEzHwBjeQprNZRgPPCfyOgqemwMY",
+        "HOST": "monorail.proxy.rlwy.net",
+        "PORT": "12663",
     }
 }
 
